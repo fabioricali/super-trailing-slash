@@ -17,10 +17,28 @@ npm install super-trailing-slash --save
 
 ## Example
 
+#### Add trailing slash
 ```javascript
 const slash = require('super-trailing-slash');
 
+slash.add('path/to/file'); //=> path/to/file/
+slash.add('\\path\\to\\file'); //=> \path\to\file\
+
+// Adds only if necessary
+slash.add('path/to/file/'); //=> path/to/file/
 ```
+
+#### Remove trailing slash
+```javascript
+slash.remove('path/to/file/'); //=> path/to/file
+slash.remove('\\path\\to\\file\\'); //=> \path\to\file
+
+// Adds only if necessary
+slash.remove('path/to/file'); //=> path/to/file
+```
+
+### API
+See <a href="https://github.com/fabioricali/super-trailing-slash/blob/master/api.md">full documentation</a>
 
 ## Changelog
 You can view the changelog <a target="_blank" href="https://github.com/fabioricali/super-trailing-slash/blob/master/CHANGELOG.md">here</a>

@@ -2,62 +2,62 @@ const slash = require('../index');
 const be = require('bejs');
 
 describe('slash', function () {
-    describe('endsWithSlashes', function () {
+    describe('checkSlashes', function () {
         it('with backslash, should be return true', function () {
             const url = 'http://www.google.it/';
-            const result = slash.endsWithSlashes(url);
+            const result = slash.checkSlashes(url);
             console.log(result);
             be.err.true(result);
         });
         it('with slash, should be return true', function () {
             const url = '\\path\\to\\any\\';
-            const result = slash.endsWithSlashes(url);
+            const result = slash.checkSlashes(url);
             console.log(result);
             be.err.true(result);
         });
         it('should be return false', function () {
             const url = 'http://www.google.it';
-            const result = slash.endsWithSlashes(url);
+            const result = slash.checkSlashes(url);
             console.log(result);
             be.err.false(result);
         });
     });
-    describe('endsWithSlash', function () {
+    describe('isSlash', function () {
         it('with backslash, should be return false', function () {
             const url = 'http://www.google.it/';
-            const result = slash.endsWithSlash(url);
+            const result = slash.isSlash(url);
             console.log(result);
             be.err.false(result);
         });
         it('with slash, should be return true', function () {
             const url = '\\path\\to\\any\\';
-            const result = slash.endsWithSlash(url);
+            const result = slash.isSlash(url);
             console.log(result);
             be.err.true(result);
         });
         it('should be return false', function () {
             const url = 'http://www.google.it';
-            const result = slash.endsWithSlash(url);
+            const result = slash.isSlash(url);
             console.log(result);
             be.err.false(result);
         });
     });
-    describe('endsWithBackslash', function () {
+    describe('isBackslash', function () {
         it('with backslash, should be return true', function () {
             const url = 'http://www.google.it/';
-            const result = slash.endsWithBackslash(url);
+            const result = slash.isBackslash(url);
             console.log(result);
             be.err.true(result);
         });
         it('with slash, should be return false', function () {
             const url = '\\path\\to\\any\\';
-            const result = slash.endsWithBackslash(url);
+            const result = slash.isBackslash(url);
             console.log(result);
             be.err.false(result);
         });
         it('should be return false', function () {
             const url = 'http://www.google.it';
-            const result = slash.endsWithBackslash(url);
+            const result = slash.isBackslash(url);
             console.log(result);
             be.err.false(result);
         });
@@ -105,7 +105,7 @@ describe('slash', function () {
     describe('_countSlash', function () {
         it('slash type, should be return 3', function () {
             const url = 'http://www.google.it/';
-            const result = slash._countSlash(url, slash.BACK_SLASH);
+            const result = slash._countSlash(url, slash.BACKSLASH);
             console.log(result);
             be.err.equal(result, 3);
         });
@@ -123,11 +123,11 @@ describe('slash', function () {
         });
     });
     describe('_detectType', function () {
-        it('should be return BACK_SLASH', function () {
+        it('should be return BACKSLASH', function () {
             const url = 'http://www.google.it/';
             const result = slash.detectType(url);
             console.log(result);
-            be.err.equal(result, slash.BACK_SLASH);
+            be.err.equal(result, slash.BACKSLASH);
         });
         it('should be return SLASH', function () {
             const url = '\\path\\to\\any';
@@ -135,17 +135,17 @@ describe('slash', function () {
             console.log(result);
             be.err.equal(result, slash.SLASH);
         });
-        it('same number slashes type should be return BACK_SLASH', function () {
+        it('same number slashes type should be return BACKSLASH', function () {
             const url = '\\any/';
             const result = slash.detectType(url);
             console.log(result);
-            be.err.equal(result, slash.BACK_SLASH);
+            be.err.equal(result, slash.BACKSLASH);
         });
-        it('no slashes should be return BACK_SLASH', function () {
+        it('no slashes should be return BACKSLASH', function () {
             const url = 'path';
             const result = slash.detectType(url);
             console.log(result);
-            be.err.equal(result, slash.BACK_SLASH);
+            be.err.equal(result, slash.BACKSLASH);
         });
     });
 });

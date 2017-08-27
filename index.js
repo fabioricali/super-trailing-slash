@@ -12,32 +12,32 @@ const SLASH = '\\';
  * @const
  * @type {string}
  */
-const BACK_SLASH = '/';
+const BACKSLASH = '/';
 
 /**
- * Add slash to string
+ * Add trailing slash to string if necessary
  * @param str {string}
  * @returns {string}
  * @example
  * slash.add('http://www.google.it'); //=> http://www.google.it/
+ * slash.add('\\path\\to\\file'); //=> \\path\\to\\file\\
  */
 function add(str) {
     return remove(str) + detectType(str);
 }
 
 /**
- * Remove slash from string
+ * Remove trailing slash from string if necessary
  * @param str {string}
  * @returns {string}
  * @example
  * slash.remove('http://www.google.it/'); //=> http://www.google.it
+ * slash.remove('\\path\\to\\file\\'); //=> \\path\\to\\file
  */
 function remove(str) {
-    if (endsWithSlashes(str)) {
-        return remove(str.slice(0, -1));
-    } else {
-        return str;
-    }
+    return checkSlashes(str)
+        ? remove(str.slice(0, -1))
+        : str;
 }
 
 /**
@@ -45,8 +45,8 @@ function remove(str) {
  * @param str {string}
  * @returns {boolean}
  */
-function endsWithBackslash(str) {
-    return str.endsWith(BACK_SLASH);
+function isBackslash(str) {
+    return str.endsWith(BACKSLASH);
 }
 
 /**
@@ -54,7 +54,7 @@ function endsWithBackslash(str) {
  * @param str {string}
  * @returns {boolean}
  */
-function endsWithSlash(str) {
+function isSlash(str) {
     return str.endsWith(SLASH);
 }
 
@@ -63,8 +63,8 @@ function endsWithSlash(str) {
  * @param str {string}
  * @returns {boolean}
  */
-function endsWithSlashes(str) {
-    return endsWithSlash(str) || endsWithBackslash(str);
+function checkSlashes(str) {
+    return isSlash(str) || isBackslash(str);
 }
 
 /**
@@ -88,20 +88,21 @@ function _countSlash(str, slashType) {
  * @returns {string}
  */
 function detectType(str) {
-    if(_countSlash(str, BACK_SLASH) >= _countSlash(str, SLASH))
-        return BACK_SLASH;
+    if (_countSlash(str, BACKSLASH) >= _countSlash(str, SLASH))
+        return BACKSLASH;
     else
         return SLASH;
 }
 
-exports.SLASH = SLASH;
-exports.BACK_SLASH = BACK_SLASH;
-
-exports._countSlash = _countSlash;
-
-exports.detectType = detectType;
-exports.endsWithSlashes = endsWithSlashes;
-exports.endsWithSlash = endsWithSlash;
-exports.endsWithBackslash = endsWithBackslash;
-exports.remove = remove;
-exports.add = add;
+// Expose module
+module.exports = {
+    SLASH,
+    BACKSLASH,
+    _countSlash,
+    detectType,
+    checkSlashes,
+    isSlash,
+    isBackslash,
+    remove,
+    add
+};

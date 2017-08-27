@@ -4,26 +4,26 @@
 
 * [super-trailing-slash](#module_super-trailing-slash)
     * [~SLASH](#module_super-trailing-slash..SLASH) : <code>string</code>
-    * [~BACK_SLASH](#module_super-trailing-slash..BACK_SLASH) : <code>string</code>
+    * [~BACKSLASH](#module_super-trailing-slash..BACKSLASH) : <code>string</code>
     * [~add(str)](#module_super-trailing-slash..add) ⇒ <code>string</code>
     * [~remove(str)](#module_super-trailing-slash..remove) ⇒ <code>string</code>
-    * [~endsWithBackslash(str)](#module_super-trailing-slash..endsWithBackslash) ⇒ <code>boolean</code>
-    * [~endsWithSlash(str)](#module_super-trailing-slash..endsWithSlash) ⇒ <code>boolean</code>
-    * [~endsWithSlashes(str)](#module_super-trailing-slash..endsWithSlashes) ⇒ <code>boolean</code>
+    * [~isBackslash(str)](#module_super-trailing-slash..isBackslash) ⇒ <code>boolean</code>
+    * [~isSlash(str)](#module_super-trailing-slash..isSlash) ⇒ <code>boolean</code>
+    * [~checkSlashes(str)](#module_super-trailing-slash..checkSlashes) ⇒ <code>boolean</code>
     * [~detectType(str)](#module_super-trailing-slash..detectType) ⇒ <code>string</code>
 
 <a name="module_super-trailing-slash..SLASH"></a>
 
 ### super-trailing-slash~SLASH : <code>string</code>
 **Kind**: inner constant of [<code>super-trailing-slash</code>](#module_super-trailing-slash)  
-<a name="module_super-trailing-slash..BACK_SLASH"></a>
+<a name="module_super-trailing-slash..BACKSLASH"></a>
 
-### super-trailing-slash~BACK_SLASH : <code>string</code>
+### super-trailing-slash~BACKSLASH : <code>string</code>
 **Kind**: inner constant of [<code>super-trailing-slash</code>](#module_super-trailing-slash)  
 <a name="module_super-trailing-slash..add"></a>
 
 ### super-trailing-slash~add(str) ⇒ <code>string</code>
-Add slash to string
+Add trailing slash to string if necessary
 
 **Kind**: inner method of [<code>super-trailing-slash</code>](#module_super-trailing-slash)  
 <table>
@@ -40,12 +40,12 @@ Add slash to string
 
 **Example**  
 ```js
-slash.add('http://www.google.it'); //=> http://www.google.it/
+slash.add('http://www.google.it'); //=> http://www.google.it/slash.add('\\path\\to\\file'); //=> \\path\\to\\file\\
 ```
 <a name="module_super-trailing-slash..remove"></a>
 
 ### super-trailing-slash~remove(str) ⇒ <code>string</code>
-Remove slash from string
+Remove trailing slash from string if necessary
 
 **Kind**: inner method of [<code>super-trailing-slash</code>](#module_super-trailing-slash)  
 <table>
@@ -62,11 +62,11 @@ Remove slash from string
 
 **Example**  
 ```js
-slash.remove('http://www.google.it/'); //=> http://www.google.it
+slash.remove('http://www.google.it/'); //=> http://www.google.itslash.remove('\\path\\to\\file\\'); //=> \\path\\to\\file
 ```
-<a name="module_super-trailing-slash..endsWithBackslash"></a>
+<a name="module_super-trailing-slash..isBackslash"></a>
 
-### super-trailing-slash~endsWithBackslash(str) ⇒ <code>boolean</code>
+### super-trailing-slash~isBackslash(str) ⇒ <code>boolean</code>
 Check if string has backslash
 
 **Kind**: inner method of [<code>super-trailing-slash</code>](#module_super-trailing-slash)  
@@ -82,9 +82,9 @@ Check if string has backslash
     </tr>  </tbody>
 </table>
 
-<a name="module_super-trailing-slash..endsWithSlash"></a>
+<a name="module_super-trailing-slash..isSlash"></a>
 
-### super-trailing-slash~endsWithSlash(str) ⇒ <code>boolean</code>
+### super-trailing-slash~isSlash(str) ⇒ <code>boolean</code>
 Check if string has slash
 
 **Kind**: inner method of [<code>super-trailing-slash</code>](#module_super-trailing-slash)  
@@ -100,9 +100,9 @@ Check if string has slash
     </tr>  </tbody>
 </table>
 
-<a name="module_super-trailing-slash..endsWithSlashes"></a>
+<a name="module_super-trailing-slash..checkSlashes"></a>
 
-### super-trailing-slash~endsWithSlashes(str) ⇒ <code>boolean</code>
+### super-trailing-slash~checkSlashes(str) ⇒ <code>boolean</code>
 Check if string has slashes, both slash and backslash
 
 **Kind**: inner method of [<code>super-trailing-slash</code>](#module_super-trailing-slash)  
