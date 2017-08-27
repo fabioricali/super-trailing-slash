@@ -33,7 +33,7 @@ slash.add('path/to/file/'); //=> path/to/file/
 slash.remove('path/to/file/'); //=> path/to/file
 slash.remove('\\path\\to\\file\\'); //=> \path\to\file
 
-// Adds only if necessary
+// Removes only if necessary
 slash.remove('path/to/file'); //=> path/to/file
 ```
 
