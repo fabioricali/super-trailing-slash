@@ -9,6 +9,7 @@
     "version:patch": "npm version patch",
     "postversion": "npm publish && npm run-script doc && git push && git push --tags",
     "mocha.test": "mocha test",
+    "dist": "babel --presets env -d dist index.js",
     "test": "istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage",
     "doc": "jsdoc2md --no-gfm index.js > api.md"
   },
@@ -30,6 +31,8 @@
   },
   "homepage": "https://github.com/fabioricali/super-trailing-slash#readme",
   "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
     "bejs": "^1.11.0",
     "coveralls": "^2.13.1",
     "istanbul": "^0.4.5",
